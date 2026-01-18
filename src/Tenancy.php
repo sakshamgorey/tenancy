@@ -152,12 +152,8 @@ class Tenancy
         $originalTenant = $this->tenant;
 
         foreach ($tenants as $tenant) {
-            if (! $tenant instanceof Tenant) {
-                $tenant = $this->find($tenant);
-            }
-
             $this->initialize($tenant);
-            $callback($tenant);
+            $callback($this->tenant);
         }
 
         if ($originalTenant) {
